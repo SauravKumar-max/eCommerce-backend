@@ -4,6 +4,8 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 require("dotenv").config();
 
+const port = process.env.PORT;
+
 const pageNotFound = require("./middleware/pageNotFound");
 const internalSeverError = require("./middleware/internalServerError");
 const { initializeDBConnection } = require("./db/db.connect");
@@ -37,6 +39,6 @@ app.use(pageNotFound);
 // 500 server error handler
 app.use(internalSeverError);
 
-app.listen(3000, () => {
+app.listen(port, () => {
   console.log("server started");
 });
